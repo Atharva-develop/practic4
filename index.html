@@ -6,12 +6,18 @@
     <style>
         #content {
             width: 100%;
-            height: 100%;
+            height: 100vh; /* Changed to viewport height to ensure proper height */
             background-color: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         #demo {
             padding: 10px; /* Added padding for better readability */
             color: white; /* Added text color for better visibility */
+            border-radius: 5px; /* Optional: Add rounded corners for better appearance */
+            text-align: center; /* Center the text inside the element */
         }
     </style>
 </head>
@@ -24,17 +30,22 @@
     <script>
         function greaterThanOrLessThanHundred() {
             let number = parseFloat(document.getElementById('input').value);
-            if (number > 100) {
-                document.getElementById('demo').innerHTML = 'The number is greater than 100';
-                document.getElementById('demo').style.backgroundColor = 'blue';
+            let demoElement = document.getElementById('demo');
+
+            if (isNaN(number)) { // Check if the input is a valid number
+                demoElement.innerHTML = 'Please enter a valid number';
+                demoElement.style.backgroundColor = 'orange'; // Color to indicate an invalid input
+            } else if (number > 100) {
+                demoElement.innerHTML = 'The number is greater than 100';
+                demoElement.style.backgroundColor = 'blue';
             } 
             else if (number === 100) {
-                document.getElementById('demo').innerHTML = 'The number is 100';
-                document.getElementById('demo').style.backgroundColor = 'gray'; // Added color for equality case
+                demoElement.innerHTML = 'The number is 100';
+                demoElement.style.backgroundColor = 'gray'; // Color for equality case
             }
             else {
-                document.getElementById('demo').innerHTML = 'The number is less than 100';
-                document.getElementById('demo').style.backgroundColor = 'red';
+                demoElement.innerHTML = 'The number is less than 100';
+                demoElement.style.backgroundColor = 'red';
             }
         }
     </script>
