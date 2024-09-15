@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Practic</title>
+    <meta name="description" content="Webpage for java script practic">
+  </head>
+  <body>
+    Give a number -- <input type="number" id="input">
+    <button id="bt" onclick="graterthenorlessthenhundred()">Click to know</button>
+    <p id="demo"></p>
+    <script>
+      function graterthenorlessthenhundred()   {
+        let number = document.getElementById('input');
+        if (number > 100) {
+          document.getElementById('demo').innerHTML = 'the mumber is grater then 100';
+        }
+        else {
+          document.getElementById('demo').innerHTML = 'the mumber is less then 100';
+        }
+      } 
+    </script>
+  </body>
+</html>
