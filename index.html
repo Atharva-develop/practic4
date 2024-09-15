@@ -1,51 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Practice</title>
-    <meta name="description" content="Webpage for JavaScript practice">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changing Page</title>
     <style>
-        #content {
-            width: 100%;
-            height: 100vh; /* Changed to viewport height to ensure proper height */
-            background-color: whitesmoke;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            transition: background-color 0.5s ease;
+            color: #fff;
+            margin: 0;
         }
-        #demo {
-            padding: 10px; /* Added padding for better readability */
-            color: white; /* Added text color for better visibility */
-            border-radius: 5px; /* Optional: Add rounded corners for better appearance */
-            text-align: center; /* Center the text inside the element */
+        h1 {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid #0072ff;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #0072ff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .greater {
+            color: green;
+        }
+        .lesser {
+            color: orange;
+        }
+        .equal {
+            color: gray;
         }
     </style>
 </head>
 <body>
-    <div id="content">
-        Give a number: <input type="number" id="input">
-        <button id="bt" onclick="greaterThanOrLessThanHundred()">Click to know</button>
-        <p id="demo"></p>
-    </div>
-    <script>
-        function greaterThanOrLessThanHundred() {
-            let number = parseFloat(document.getElementById('input').value);
-            let demoElement = document.getElementById('demo');
+    <h1>Background Color Changer</h1>
+    <p>Enter a number below:</p>
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <br>
+    <button onclick="changeBackgroundColor()">Submit</button>
+    <p id="result" class="result"></p>
 
-            if (isNaN(number)) { // Check if the input is a valid number
-                demoElement.innerHTML = 'Please enter a valid number';
-                demoElement.style.backgroundColor = 'orange'; // Color to indicate an invalid input
-            } else if (number > 100) {
-                demoElement.innerHTML = 'The number is greater than 100';
-                demoElement.style.backgroundColor = 'blue';
-            } 
-            else if (number === 100) {
-                demoElement.innerHTML = 'The number is 100';
-                demoElement.style.backgroundColor = 'gray'; // Color for equality case
-            }
-            else {
-                demoElement.innerHTML = 'The number is less than 100';
-                demoElement.style.backgroundColor = 'red';
+    <script>
+        function changeBackgroundColor() {
+            // Get the value from the input field
+            const number = document.getElementById('numberInput').value;
+            const resultElement = document.getElementById('result');
+
+            // Check the number and update the background color and result text
+            if (number > 100) {
+                document.body.style.backgroundColor = 'blue';
+                resultElement.textContent = 'The number is greater than 100.';
+                resultElement.className = 'result greater';
+            } else if (number < 100) {
+                document.body.style.backgroundColor = 'red';
+                resultElement.textContent = 'The number is less than 100.';
+                resultElement.className = 'result lesser';
+            } else {
+                document.body.style.backgroundColor = 'gray';
+                resultElement.textContent = 'The number is equal to 100.';
+                resultElement.className = 'result equal';
             }
         }
     </script>
